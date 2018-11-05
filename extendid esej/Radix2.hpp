@@ -16,11 +16,11 @@ class Radix2: public FFT {
   
 private:
     void separate(complex<double>* X, const long length);
+    void compute(complex<double>* X, const long length);
     
 public:
-    void compute(complex<double>* X, const long length=sampleCount);
+    void computeFourier();
     Radix2(const string &name);
-    
 };
 
 #endif /* Radix2_hpp */

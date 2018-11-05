@@ -10,6 +10,7 @@
 		242C52772151003E00C5E623 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 242C52762151003E00C5E623 /* main.cpp */; };
 		24C82F052190BB990006DE80 /* FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F032190BB990006DE80 /* FFT.cpp */; };
 		24C82F082190C56F0006DE80 /* Radix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F062190C56F0006DE80 /* Radix2.cpp */; };
+		24C82F0B2190EE290006DE80 /* Hartley.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F092190EE290006DE80 /* Hartley.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		24C82F042190BB990006DE80 /* FFT.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FFT.hpp; sourceTree = "<group>"; };
 		24C82F062190C56F0006DE80 /* Radix2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Radix2.cpp; sourceTree = "<group>"; };
 		24C82F072190C56F0006DE80 /* Radix2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Radix2.hpp; sourceTree = "<group>"; };
+		24C82F092190EE290006DE80 /* Hartley.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Hartley.cpp; sourceTree = "<group>"; };
+		24C82F0A2190EE290006DE80 /* Hartley.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Hartley.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				24C82F042190BB990006DE80 /* FFT.hpp */,
 				24C82F062190C56F0006DE80 /* Radix2.cpp */,
 				24C82F072190C56F0006DE80 /* Radix2.hpp */,
+				24C82F092190EE290006DE80 /* Hartley.cpp */,
+				24C82F0A2190EE290006DE80 /* Hartley.hpp */,
 			);
 			path = "extendid esej";
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24C82F082190C56F0006DE80 /* Radix2.cpp in Sources */,
+				24C82F0B2190EE290006DE80 /* Hartley.cpp in Sources */,
 				24C82F052190BB990006DE80 /* FFT.cpp in Sources */,
 				242C52772151003E00C5E623 /* main.cpp in Sources */,
 			);

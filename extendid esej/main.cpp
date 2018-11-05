@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "Radix2.hpp"
+#include "Hartley.hpp"
 
 
 int main(int argc, const char * argv[]) {
@@ -15,9 +16,16 @@ int main(int argc, const char * argv[]) {
     Radix2 r2("r2");
     
     r2.generateSamples();
-    r2.compute(r2.output);
+    r2.computeFourier();
     r2.displayOutput();
     r2.outputCSV();
+    
+    Hartley fht("hartley");
+    
+    fht.generateSamples();
+    fht.computeFourier();
+    fht.displayOutput();
+    fht.outputCSV();
     
     return 0;
 }
