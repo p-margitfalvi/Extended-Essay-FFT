@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		242C52772151003E00C5E623 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 242C52762151003E00C5E623 /* main.cpp */; };
+		24C82F052190BB990006DE80 /* FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F032190BB990006DE80 /* FFT.cpp */; };
+		24C82F082190C56F0006DE80 /* Radix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F062190C56F0006DE80 /* Radix2.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		242C52732151003E00C5E623 /* extendid esej */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "extendid esej"; sourceTree = BUILT_PRODUCTS_DIR; };
 		242C52762151003E00C5E623 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		24C82F032190BB990006DE80 /* FFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FFT.cpp; sourceTree = "<group>"; };
+		24C82F042190BB990006DE80 /* FFT.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FFT.hpp; sourceTree = "<group>"; };
+		24C82F062190C56F0006DE80 /* Radix2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Radix2.cpp; sourceTree = "<group>"; };
+		24C82F072190C56F0006DE80 /* Radix2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Radix2.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				242C52762151003E00C5E623 /* main.cpp */,
+				24C82F032190BB990006DE80 /* FFT.cpp */,
+				24C82F042190BB990006DE80 /* FFT.hpp */,
+				24C82F062190C56F0006DE80 /* Radix2.cpp */,
+				24C82F072190C56F0006DE80 /* Radix2.hpp */,
 			);
 			path = "extendid esej";
 			sourceTree = "<group>";
@@ -118,6 +128,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24C82F082190C56F0006DE80 /* Radix2.cpp in Sources */,
+				24C82F052190BB990006DE80 /* FFT.cpp in Sources */,
 				242C52772151003E00C5E623 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -229,7 +241,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
