@@ -18,26 +18,32 @@ using namespace std;
 
 class FFT {
     
-public:
-    ofstream file;
-    
-    static const long sampleCount = 128;
-    constexpr static const double sampleDeltaT = 1;
-    constexpr static const double sampleFrequency = sampleCount / sampleDeltaT;
-    constexpr static const double frequencyResolution = sampleFrequency / sampleCount;
+protected:
+    long sampleCount = (long)exp2(10);
+    std::chrono::milliseconds timeTaken;
+    double sampleDeltaT = 1;
+    double sampleFrequency = sampleCount / sampleDeltaT;
+    double frequencyResolution = sampleFrequency / sampleCount;
+    long operationsTaken = 0;
     
     static const int frequencyCount = 5;
     const double freq[frequencyCount] = { 2, 5, 11, 17, 29};
+    void generateSamples();
     
-    complex<double> samples[sampleCount];
-    complex<double> output[sampleCount];
+public:
+    string name;
+    ofstream file;
+    
+    complex<double>* samples;
+    complex<double>* output;
     
     FFT(const string &name);
     ~FFT();
     
     void displayOutput();
     void outputCSV();
-    void generateSamples();
+    void insertSamples(complex<double>* data);
+    std::chrono::milliseconds getTimeTaken() { return timeTaken; }
 };
 
 

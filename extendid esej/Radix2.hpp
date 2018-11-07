@@ -10,6 +10,7 @@
 #define Radix2_hpp
 
 #include <stdio.h>
+#include <time.h>
 #include "FFT.hpp"
 
 class Radix2: public FFT {
@@ -18,12 +19,11 @@ private:
     void separate(complex<double>* X, const long length);
     void compute(complex<double>* X, const long length);
     
-    void prepareData();
-    
     complex<double>** exponentialTable;
     
 public:
     void computeFourier();
+    void prepareData();
     Radix2(const string &name);
     ~Radix2();
 };

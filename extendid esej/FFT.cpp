@@ -9,13 +9,16 @@
 #include "FFT.hpp"
 
 
-FFT::FFT(const string &name) : file(name + ".csv") {
-    return;
+FFT::FFT(const string &name) : file(name + ".csv"), name(name) {
+    samples = new complex<double>[sampleCount];
+    output = new complex<double>[sampleCount];
 }
 
 FFT::~FFT() {
     file.flush();
     file.close();
+    delete [] samples;
+    delete [] output;
 }
 
 void FFT::displayOutput() {
@@ -34,6 +37,10 @@ void FFT::outputCSV() {
     }
     
     file.flush();
+}
+
+void FFT::insertSamples(complex<double>* data) {
+    
 }
 
 void FFT::generateSamples() {

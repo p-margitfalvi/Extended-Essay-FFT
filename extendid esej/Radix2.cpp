@@ -9,8 +9,7 @@
 #include "Radix2.hpp"
 
 Radix2::Radix2(const string &name) : FFT(name) {
-    // Initialise the exponential table with values
-    prepareData();
+    return;
 }
 
 Radix2::~Radix2() {
@@ -55,6 +54,7 @@ void Radix2::compute(complex<double>* X, const long length) {
     }
 }
 
+// Initialise the exponential table with values and prepare the samples
 void Radix2::prepareData() {
     long log2length = (long)log2(sampleCount) + 1;
     exponentialTable = new complex<double>*[log2length];
@@ -65,8 +65,12 @@ void Radix2::prepareData() {
         }
         exponentialTable[i] = row;
     }
+    generateSamples();
 }
 
 void Radix2::computeFourier() {
+    std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
     compute(output, sampleCount);
+    std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();
+    timeTaken = std::chrono::duration_cast<typeof(timeTaken)>(t2 - t1);
 }

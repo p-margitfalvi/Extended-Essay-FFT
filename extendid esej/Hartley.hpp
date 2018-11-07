@@ -10,13 +10,13 @@
 #define Hartley_hpp
 
 #include <stdio.h>
+#include <time.h>
 #include "FFT.hpp"
-
 
 class Hartley: public FFT {
     
 private:
-    double H[sampleCount];
+    double* H;
     double* xarray;
     double* sine;
     double* cosine;
@@ -25,14 +25,14 @@ private:
     double* digitReversal(double* xarray, long length);
     void swap(double* x, long i, long j);
     void toReal();
-    void prepareData();
+    void generateSamples();
     
 public:
     Hartley(const string &name);
     ~Hartley();
     
     void computeFourier();
-    void generateSamples();
+    void prepareData();
 };
 
 #endif /* Hartley_hpp */

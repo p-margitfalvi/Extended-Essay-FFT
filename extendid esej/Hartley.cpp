@@ -13,6 +13,7 @@ Hartley::Hartley(const string &name) : FFT(name){
 }
 
 Hartley::~Hartley() {
+    delete [] H;
     delete [] xarray;
     delete [] sine;
     delete [] cosine;
@@ -20,9 +21,6 @@ Hartley::~Hartley() {
 
 double* Hartley::compute(double* xvector, double* xarray, double* cosine, double* sine, long length) {
     
-    for (long i = 0; i < length; ++i) {
-        xarray[i] = 0;
-    }
     long log2length = (long)log2(length);
     long b_p = length / 2;
     long n_p = 2;
@@ -71,14 +69,15 @@ double* Hartley::compute(double* xvector, double* xarray, double* cosine, double
 }
 
 void Hartley::computeFourier() {
-    
+    std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
     digitReversal(H, sampleCount);
     double* result = compute(H, xarray, cosine, sine, sampleCount);
     
     for (long i = 0; i < sampleCount; ++i) {
         output[i] = complex<double>((result[i] + result[sampleCount - i])/2, (result[i] - result[sampleCount - i])/2);
     }
-    
+    std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();
+    timeTaken = std::chrono::duration_cast<typeof(timeTaken)>(t2 - t1);
 }
 
 void Hartley::toReal() {
@@ -88,7 +87,8 @@ void Hartley::toReal() {
 }
 
 void Hartley::prepareData() {
-    
+    operationsTaken = 0;
+    H = new double[sampleCount];
     xarray = new double[sampleCount];
     sine = new double[sampleCount];
     cosine = new double[sampleCount];
@@ -98,7 +98,7 @@ void Hartley::prepareData() {
         sine[i] = sin(2*M_PI*i/sampleCount);
         cosine[i] = cos(2*M_PI*i/sampleCount);
     }
-    
+    generateSamples();
 }
 
 void Hartley::generateSamples() {
@@ -113,7 +113,7 @@ void Hartley::swap(double* x, long i, long j) {
 }
 
 double* Hartley::digitReversal(double* array, long length) {
-    int n1var;
+    long n1var;
     long log2length = (long)log2(length);
     if (log2length % 2 == 0) {
         n1var = (int)sqrt(length);

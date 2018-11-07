@@ -13,18 +13,20 @@
 
 int main(int argc, const char * argv[]) {
     
-    Radix2 r2("r2");
+    Radix2 r2("radix-2");
     
-    r2.generateSamples();
+    r2.prepareData();
     r2.computeFourier();
-    r2.displayOutput();
+    cout << "Algorithm " << r2.name << " took: " << r2.getTimeTaken().count() << "ms.\n";
+    //r2.displayOutput();
     r2.outputCSV();
     
-    Hartley fht("hartley");
+    Hartley fht("fht");
     
-    fht.generateSamples();
+    fht.prepareData();
     fht.computeFourier();
-    fht.displayOutput();
+    cout << "Algorithm " << fht.name << " took: " << fht.getTimeTaken().count() << "ms.\n";
+    //fht.displayOutput();
     fht.outputCSV();
     
     return 0;
