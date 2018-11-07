@@ -47,7 +47,8 @@ void Radix2::compute(complex<double>* X, const long length) {
             complex<double> o = X[i + length/2];
             //complex<double> w = exp(complex<double>(0, -2*M_PI*i/length)); NOW USES TABLE CALCULATED VALUES
             complex<double> w = exponentialTable[(long)log2(length)][i];
-            
+            multiplications += 4;
+            additions += 6;
             X[i] = e + w * o;
             X[i + length/2] = e - w * o;
         }
@@ -65,6 +66,8 @@ void Radix2::prepareData() {
         }
         exponentialTable[i] = row;
     }
+    additions = 0;
+    multiplications = 0;
     generateSamples();
 }
 

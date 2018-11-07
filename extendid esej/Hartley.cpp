@@ -39,8 +39,11 @@ double* Hartley::compute(double* xvector, double* xarray, double* cosine, double
                     if (nvar == 0) {
                         xcs = xvector[baseb + nvar];
                     } else {
+                        multiplications += 2;
+                        additions += 1;
                         xcs = xvector[baseb + nvar]*cosine[t_f] + xvector[nmn]*sine[t_f];
                     }
+                    additions += 2;
                     xarray[baset + nvar] = xvector[baset + nvar] + xcs;
                     xarray[baseb + nvar] = xvector[baset + nvar] - xcs;
                 } else {
@@ -48,8 +51,11 @@ double* Hartley::compute(double* xvector, double* xarray, double* cosine, double
                     if (nvar == 0) {
                         xcs = xarray[baseb + nvar];
                     } else {
+                        multiplications += 2;
+                        additions += 1;
                         xcs = xarray[baseb + nvar]*cosine[t_f] + xarray[nmn]*sine[t_f];
                     }
+                    additions += 2;
                     xvector[baset + nvar] = xarray[baset + nvar] + xcs;
                     xvector[baseb + nvar] = xarray[baset + nvar] - xcs;
                 }
@@ -87,7 +93,6 @@ void Hartley::toReal() {
 }
 
 void Hartley::prepareData() {
-    operationsTaken = 0;
     H = new double[sampleCount];
     xarray = new double[sampleCount];
     sine = new double[sampleCount];
@@ -98,6 +103,8 @@ void Hartley::prepareData() {
         sine[i] = sin(2*M_PI*i/sampleCount);
         cosine[i] = cos(2*M_PI*i/sampleCount);
     }
+    multiplications = 0;
+    additions = 0;
     generateSamples();
 }
 

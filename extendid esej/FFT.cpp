@@ -21,6 +21,12 @@ FFT::~FFT() {
     delete [] output;
 }
 
+void FFT::setSampleCount(const long sampleCount) {
+    this->sampleCount = sampleCount;
+    sampleFrequency = sampleCount / sampleDeltaT;
+    frequencyResolution = sampleFrequency / sampleCount;
+}
+
 void FFT::displayOutput() {
     printf("  n\tx[]\tX[]\tf\n");       // header line
     // loop to print values

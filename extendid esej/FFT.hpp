@@ -19,12 +19,13 @@ using namespace std;
 class FFT {
     
 protected:
-    long sampleCount = (long)exp2(10);
+    long sampleCount = (long)exp2(20);
     std::chrono::milliseconds timeTaken;
     double sampleDeltaT = 1;
     double sampleFrequency = sampleCount / sampleDeltaT;
     double frequencyResolution = sampleFrequency / sampleCount;
-    long operationsTaken = 0;
+    long multiplications = 0;
+    long additions = 0;
     
     static const int frequencyCount = 5;
     const double freq[frequencyCount] = { 2, 5, 11, 17, 29};
@@ -40,10 +41,13 @@ public:
     FFT(const string &name);
     ~FFT();
     
+    void setSampleCount(const long sampleCount);
     void displayOutput();
     void outputCSV();
     void insertSamples(complex<double>* data);
     std::chrono::milliseconds getTimeTaken() { return timeTaken; }
+    long getAdditions() { return additions; }
+    long getMultiplications() { return multiplications; }
 };
 
 

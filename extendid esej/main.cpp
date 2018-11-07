@@ -17,7 +17,7 @@ int main(int argc, const char * argv[]) {
     
     r2.prepareData();
     r2.computeFourier();
-    cout << "Algorithm " << r2.name << " took: " << r2.getTimeTaken().count() << "ms.\n";
+    cout << "Algorithm " << r2.name << " took: " << r2.getTimeTaken().count() << "ms, " << r2.getMultiplications() << " multiplications and " << r2.getAdditions() << " additions.\n";
     //r2.displayOutput();
     r2.outputCSV();
     
@@ -25,7 +25,7 @@ int main(int argc, const char * argv[]) {
     
     fht.prepareData();
     fht.computeFourier();
-    cout << "Algorithm " << fht.name << " took: " << fht.getTimeTaken().count() << "ms.\n";
+    cout << "Algorithm " << fht.name << " took: " << fht.getTimeTaken().count() << "ms, " << fht.getMultiplications() << " multiplications and " << fht.getAdditions() << " additions.\n";
     //fht.displayOutput();
     fht.outputCSV();
     
