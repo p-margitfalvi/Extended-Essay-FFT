@@ -21,7 +21,7 @@ class FFT {
 public:
     ofstream file;
     
-    static const long sampleCount = 8;
+    static const long sampleCount = 128;
     constexpr static const double sampleDeltaT = 1;
     constexpr static const double sampleFrequency = sampleCount / sampleDeltaT;
     constexpr static const double frequencyResolution = sampleFrequency / sampleCount;

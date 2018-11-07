@@ -23,7 +23,8 @@ int main(int argc, const char * argv[]) {
     Hartley fht("hartley");
     
     fht.generateSamples();
-    fht.computeFourier();
+    fht.computeTest();
+    //fht.computeFourier();
     fht.displayOutput();
     fht.outputCSV();
     

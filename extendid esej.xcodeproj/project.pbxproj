@@ -11,6 +11,7 @@
 		24C82F052190BB990006DE80 /* FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F032190BB990006DE80 /* FFT.cpp */; };
 		24C82F082190C56F0006DE80 /* Radix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F062190C56F0006DE80 /* Radix2.cpp */; };
 		24C82F0B2190EE290006DE80 /* Hartley.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F092190EE290006DE80 /* Hartley.cpp */; };
+		24C82F0F21924B600006DE80 /* fht.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F0E21924B600006DE80 /* fht.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		24C82F072190C56F0006DE80 /* Radix2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Radix2.hpp; sourceTree = "<group>"; };
 		24C82F092190EE290006DE80 /* Hartley.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Hartley.cpp; sourceTree = "<group>"; };
 		24C82F0A2190EE290006DE80 /* Hartley.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Hartley.hpp; sourceTree = "<group>"; };
+		24C82F0E21924B600006DE80 /* fht.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fht.cpp; sourceTree = "<group>"; };
+		24C82F1021924F7F0006DE80 /* fht.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fht.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				24C82F062190C56F0006DE80 /* Radix2.cpp */,
 				24C82F072190C56F0006DE80 /* Radix2.hpp */,
 				24C82F092190EE290006DE80 /* Hartley.cpp */,
+				24C82F0E21924B600006DE80 /* fht.cpp */,
+				24C82F1021924F7F0006DE80 /* fht.h */,
 				24C82F0A2190EE290006DE80 /* Hartley.hpp */,
 			);
 			path = "extendid esej";
@@ -136,6 +141,7 @@
 				24C82F082190C56F0006DE80 /* Radix2.cpp in Sources */,
 				24C82F0B2190EE290006DE80 /* Hartley.cpp in Sources */,
 				24C82F052190BB990006DE80 /* FFT.cpp in Sources */,
+				24C82F0F21924B600006DE80 /* fht.cpp in Sources */,
 				242C52772151003E00C5E623 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
