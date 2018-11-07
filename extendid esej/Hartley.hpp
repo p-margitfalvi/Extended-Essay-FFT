@@ -19,26 +19,15 @@ class Hartley: public FFT {
 private:
     double H[sampleCount];
     
-    void separate(double* X, const long length);
-    void separate(complex<double>* X, const long length);
-    void compute(double* X, const long length);
-    void pseudoversion(double* a, const long length, double* x);
-    void discrete();
-    void discreteHalved();
-    void toReal();
-    double* pyTransform(double* xvector, double* xarray, double* cosine, double* sine, long length, long log2length);
-    double* digitReversal(double* xarray, long length, long log2length);
-    void hartleyShift(double* c, const long length);
+    double* compute(double* xvector, double* xarray, double* cosine, double* sine, long length);
+    double* digitReversal(double* xarray, long length);
     void swap(double* x, long i, long j);
+    void toReal();
     
 public:
     Hartley(const string &name);
     
     void computeFourier();
-    void computeTest();
-    void computeDiscrete();
-    void computeDiscreteHalved();
-    void computePseudo();
     void generateSamples();
 };
 
