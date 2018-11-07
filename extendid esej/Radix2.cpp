@@ -9,7 +9,15 @@
 #include "Radix2.hpp"
 
 Radix2::Radix2(const string &name) : FFT(name) {
-    return;
+    // Initialise the exponential table with values
+    prepareData();
+}
+
+Radix2::~Radix2() {
+    long log2length = (long)log2(sampleCount) + 1;
+    for (long i = 0; i < log2length; ++i) {
+        delete [] exponentialTable[i];
+    }
 }
 
 void Radix2::separate(complex<double>* X, const long length) {
@@ -38,11 +46,24 @@ void Radix2::compute(complex<double>* X, const long length) {
         for(long i = 0; i < length/2; i++) {
             complex<double> e = X[i];
             complex<double> o = X[i + length/2];
-            complex<double> w = exp(complex<double>(0, -2*M_PI*i/length));
+            //complex<double> w = exp(complex<double>(0, -2*M_PI*i/length)); NOW USES TABLE CALCULATED VALUES
+            complex<double> w = exponentialTable[(long)log2(length)][i];
             
             X[i] = e + w * o;
             X[i + length/2] = e - w * o;
         }
+    }
+}
+
+void Radix2::prepareData() {
+    long log2length = (long)log2(sampleCount) + 1;
+    exponentialTable = new complex<double>*[log2length];
+    for (long i = 1; i < log2length; ++i) {
+        complex<double>* row = new complex<double>[(long)exp2(i - 1)];
+        for (long j = 0; j < (long)exp2(i - 1); ++j) {
+            row[j] = exp(complex<double>(0, -2*M_PI*j/exp2(i)));
+        }
+        exponentialTable[i] = row;
     }
 }
 

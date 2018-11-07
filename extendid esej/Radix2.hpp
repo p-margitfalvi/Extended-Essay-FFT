@@ -18,9 +18,14 @@ private:
     void separate(complex<double>* X, const long length);
     void compute(complex<double>* X, const long length);
     
+    void prepareData();
+    
+    complex<double>** exponentialTable;
+    
 public:
     void computeFourier();
     Radix2(const string &name);
+    ~Radix2();
 };
 
 #endif /* Radix2_hpp */

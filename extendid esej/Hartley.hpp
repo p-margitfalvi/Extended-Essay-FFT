@@ -11,21 +11,25 @@
 
 #include <stdio.h>
 #include "FFT.hpp"
-#include "fht.h"
 
 
 class Hartley: public FFT {
     
 private:
     double H[sampleCount];
+    double* xarray;
+    double* sine;
+    double* cosine;
     
     double* compute(double* xvector, double* xarray, double* cosine, double* sine, long length);
     double* digitReversal(double* xarray, long length);
     void swap(double* x, long i, long j);
     void toReal();
+    void prepareData();
     
 public:
     Hartley(const string &name);
+    ~Hartley();
     
     void computeFourier();
     void generateSamples();

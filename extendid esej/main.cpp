@@ -24,7 +24,6 @@ int main(int argc, const char * argv[]) {
     
     fht.generateSamples();
     fht.computeFourier();
-    //fht.computeFourier();
     fht.displayOutput();
     fht.outputCSV();
     
