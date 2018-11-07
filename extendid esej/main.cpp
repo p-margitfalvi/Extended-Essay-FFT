@@ -7,12 +7,11 @@
 //
 
 #include <iostream>
-#include "Radix2.hpp"
-#include "Hartley.hpp"
+#include "Test.hpp"
 
 
 int main(int argc, const char * argv[]) {
-    
+    /*
     Radix2 r2("radix-2");
     
     r2.prepareData();
@@ -28,6 +27,9 @@ int main(int argc, const char * argv[]) {
     cout << "Algorithm " << fht.name << " took: " << fht.getTimeTaken().count() << "ms, " << fht.getMultiplications() << " multiplications and " << fht.getAdditions() << " additions.\n";
     //fht.displayOutput();
     fht.outputCSV();
+    */
     
+    Test test("/Users/Palo/Documents/Programming/EE/extendid\ esej/data", 10, 20, true);
+    cout << test.runTest() << "\n";
     return 0;
 }

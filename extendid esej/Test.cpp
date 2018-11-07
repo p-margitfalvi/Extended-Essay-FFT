@@ -38,9 +38,6 @@ Test::Test(const string& path, const int minOrder, const int maxOrder, bool chec
     multiplications.second = new long[max2Order - min2Order];
     additions.second = new long[max2Order - min2Order];
     
-    radix2 = new Radix2(path + "radix2");
-    fht = new Hartley(path + "fht");
-    
 }
 
 bool Test::runTest() {
@@ -48,7 +45,7 @@ bool Test::runTest() {
     for (int i = min2Order; i <= max2Order; ++i) {
         long sampleSize = (long)exp2(i);
         
-        radix2->setSampleCount(sampleSize);
+        radix2 = new Radix2(path + "radix2", sampleSize);
         radix2->prepareData();
         radix2->computeFourier();
         
@@ -57,7 +54,7 @@ bool Test::runTest() {
         multiplications.first[i] = radix2->getMultiplications();
         
         
-        fht->setSampleCount(sampleSize);
+        fht = new Hartley(path + "fht", sampleSize);
         fht->prepareData();
         fht->computeFourier();
         
@@ -69,11 +66,13 @@ bool Test::runTest() {
             complex<double>* r2Output = radix2->getOutput();
             complex<double>* fhtOutput = fht->getOutput();
             for (long i = 0; i < sampleSize; ++i) {
-                if (!compareComplex(r2Output[i], fhtOutput[i])) {
+                if (!compareDoubles(abs(r2Output[i]), abs(fhtOutput[i]))) {
                     return false;
                 }
             }
         }
+        delete fht;
+        delete radix2;
         
         
     }

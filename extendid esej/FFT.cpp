@@ -9,7 +9,7 @@
 #include "FFT.hpp"
 
 
-FFT::FFT(const string &name) : file(name + ".csv"), name(name) {
+FFT::FFT(const string &name, long sampleCount) : file(name + ".csv"), name(name), sampleCount(sampleCount) {
     samples = new complex<double>[sampleCount];
     output = new complex<double>[sampleCount];
 }
