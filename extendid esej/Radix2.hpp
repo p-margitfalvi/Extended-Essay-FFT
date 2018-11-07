@@ -24,7 +24,7 @@ private:
 public:
     void computeFourier();
     void prepareData();
-    Radix2(const string &name);
+    Radix2(const string &name, const long sampleCount);
     ~Radix2();
 };
 

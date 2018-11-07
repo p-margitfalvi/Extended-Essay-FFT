@@ -45,7 +45,6 @@ private:
     Hartley* fht;
     
     // A function to compare 2 doubles
-    bool compareDoubles (double A, double B);
     bool compareComplex(complex<double> A, complex<double> B);
     
 public:
@@ -53,6 +52,7 @@ public:
     Test(const string& path, const int minOrder, const int maxOrder, const bool checkOutput);
     ~Test();
     bool runTest();
+    static bool compareDoubles (double A, double B);
     //long* getTimes() { return times; }
     // Writes the data into a file
     void writeData();

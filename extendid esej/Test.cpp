@@ -38,8 +38,8 @@ Test::Test(const string& path, const int minOrder, const int maxOrder, bool chec
     multiplications.second = new long[max2Order - min2Order];
     additions.second = new long[max2Order - min2Order];
     
-    radix2 = new Radix2(path + "radix2");
-    fht = new Hartley(path + "fht");
+    radix2 = new Radix2(path + "radix2", 0);
+    fht = new Hartley(path + "fht", 0);
     
 }
 

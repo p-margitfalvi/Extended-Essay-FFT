@@ -38,7 +38,7 @@ public:
     complex<double>* samples;
     complex<double>* output;
     
-    FFT(const string &name);
+    FFT(const string &name, const long sampleCount);
     ~FFT();
     
     void setSampleCount(const long sampleCount);

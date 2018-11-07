@@ -28,7 +28,7 @@ private:
     void generateSamples();
     
 public:
-    Hartley(const string &name);
+    Hartley(const string &name, const long sampleCount);
     ~Hartley();
     
     void computeFourier();
