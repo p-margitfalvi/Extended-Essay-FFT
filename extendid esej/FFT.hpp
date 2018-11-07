@@ -48,6 +48,7 @@ public:
     std::chrono::milliseconds getTimeTaken() { return timeTaken; }
     long getAdditions() { return additions; }
     long getMultiplications() { return multiplications; }
+    complex<double>* getOutput() { return output; }
 };
 
 

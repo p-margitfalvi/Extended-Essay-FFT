@@ -11,13 +11,15 @@
 Test::~Test() {
     file.flush();
     file.close();
-    delete [] radix2Times;
-    delete [] fhtTimes;
     
-    delete [] radix2Multiplications;
-    delete [] radix2Additions;
-    delete [] fhtMultiplications;
-    delete [] fhtAdditions;
+    delete [] times.first;
+    delete [] times.second;
+    
+    delete [] multiplications.first;
+    delete [] multiplications.second;
+    
+    delete [] additions.first;
+    delete [] additions.second;
     
     delete radix2;
     delete fht;
@@ -27,14 +29,14 @@ Test::Test(const string& path, const int minOrder, const int maxOrder, bool chec
     
     file = ofstream(path + "output.csv");
     
-    radix2Times = new long[max2Order - min2Order];
-    fhtTimes = new long[max2Order - min2Order];
+    times.first = new chrono::microseconds[max2Order - min2Order];
+    times.second = new chrono::microseconds[max2Order - min2Order];
     
-    radix2Multiplications = new long[max2Order - min2Order];
-    radix2Additions = new long[max2Order - min2Order];
+    multiplications.first = new long[max2Order - min2Order];
+    additions.first = new long[max2Order - min2Order];
     
-    fhtMultiplications = new long[max2Order - min2Order];
-    fhtAdditions = new long[max2Order - min2Order];
+    multiplications.second = new long[max2Order - min2Order];
+    additions.second = new long[max2Order - min2Order];
     
     radix2 = new Radix2(path + "radix2");
     fht = new Hartley(path + "fht");
@@ -45,13 +47,49 @@ bool Test::runTest() {
     
     for (int i = min2Order; i <= max2Order; ++i) {
         long sampleSize = (long)exp2(i);
+        
         radix2->setSampleCount(sampleSize);
         radix2->prepareData();
         radix2->computeFourier();
         
+        times.first[i] = radix2->getTimeTaken();
+        additions.first[i] = radix2->getAdditions();
+        multiplications.first[i] = radix2->getMultiplications();
+        
+        
+        fht->setSampleCount(sampleSize);
+        fht->prepareData();
+        fht->computeFourier();
+        
+        times.second[i] = fht->getTimeTaken();
+        additions.second[i] = fht->getAdditions();
+        multiplications.second[i] = fht-> getMultiplications();
+        
+        if (checkOutput) {
+            complex<double>* r2Output = radix2->getOutput();
+            complex<double>* fhtOutput = fht->getOutput();
+            for (long i = 0; i < sampleSize; ++i) {
+                if (!compareComplex(r2Output[i], fhtOutput[i])) {
+                    return false;
+                }
+            }
+        }
+        
         
     }
     
-    return false;
+    return true;
+}
+                    
+bool Test::compareComplex(complex<double> A, complex<double> B) {
+    
+    return compareDoubles(A.real(), B.real()) && compareDoubles(A.imag(), B.imag());
+    
+}
+
+bool Test::compareDoubles(double A, double B)
+{
+    double diff = A - B;
+    return (diff < epsilon) && (-diff < epsilon);
 }
 

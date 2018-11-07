@@ -18,26 +18,44 @@ using namespace std;
 
 class Test {
     
-public:
+private:
     
     ofstream file;
+    
+    // A constant for the comparision of 2 doubles
+    constexpr static const double epsilon = 0.2;
+    
+    // Smallest and largest sample size to test, in the form of 2^n
     const int min2Order = 10;
     const int max2Order = 20;
-    const bool checkOutput;
-    const string path;
-    long *radix2Times, *fhtTimes;
-    long *radix2Multiplications, *radix2Additions;
-    long *fhtMultiplications, *fhtAdditions;
     
+    // Whether to check if the two algorithms produce the same output
+    const bool checkOutput;
+    
+    // Where to store the resultant data
+    const string path;
+    
+    // Arrays storing the benchmarks, .first is radix2, .second is fht
+    pair<chrono::microseconds*, chrono::microseconds*> times;
+    pair<long*, long*> multiplications;
+    pair<long*, long*> additions;
+    
+    // The algorithm classes
     Radix2* radix2;
     Hartley* fht;
     
+    // A function to compare 2 doubles
+    bool compareDoubles (double A, double B);
+    bool compareComplex(complex<double> A, complex<double> B);
     
+public:
+
     Test(const string& path, const int minOrder, const int maxOrder, const bool checkOutput);
     ~Test();
     bool runTest();
-    long* getTimes() { return times; }
-    void writeTimes();
+    //long* getTimes() { return times; }
+    // Writes the data into a file
+    void writeData();
     
 };
 
