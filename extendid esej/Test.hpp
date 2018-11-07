@@ -25,7 +25,9 @@ public:
     const int max2Order = 20;
     const bool checkOutput;
     const string path;
-    long* times;
+    long *radix2Times, *fhtTimes;
+    long *radix2Multiplications, *radix2Additions;
+    long *fhtMultiplications, *fhtAdditions;
     
     Radix2* radix2;
     Hartley* fht;
