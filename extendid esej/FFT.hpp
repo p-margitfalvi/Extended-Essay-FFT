@@ -13,6 +13,7 @@
 #include <iostream>
 #include <fstream>
 #include <complex>
+#include <vector>
 
 using namespace std;
 
@@ -38,14 +39,10 @@ public:
     string name;
     ofstream file;
     
-    complex<double>* samples;
-    complex<double>* output;
+    vector<complex<double>> samples;
+    vector<complex<double>> output;
     
-<<<<<<< HEAD
     FFT(const string &name, const long sampleCount);
-=======
-    FFT(const string &name, long sampleCount);
->>>>>>> 1f35b6f90e5b5d9b3c381770d416a0d28acf1f25
     ~FFT();
     
     void setSampleCount(const long sampleCount);
@@ -55,7 +52,7 @@ public:
     std::chrono::milliseconds getTimeTaken() { return timeTaken; }
     long getAdditions() { return additions; }
     long getMultiplications() { return multiplications; }
-    complex<double>* getOutput() { return output; }
+    vector<complex<double>> getOutput() { return output; }
 };
 
 
