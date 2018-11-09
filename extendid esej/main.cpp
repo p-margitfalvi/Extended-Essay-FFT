@@ -9,17 +9,25 @@
 #include <iostream>
 #include "Radix2.hpp"
 #include "Hartley.hpp"
-#include "Test.hpp"
 #include <fstream>
 #include <random>
 
 
+double epsilon = 0.8;
+
+bool compareDoubles(double A, double B)
+{
+    double diff = A - B;
+    return (diff < epsilon) && (-diff < epsilon);
+}
+
+
 int main(int argc, const char * argv[]) {
-    long sampleCount = 512;
-    const int minOrder = 3;
-    const int maxOrder = 10;
+    const int minOrder = 2;
+    long sampleCount = (long)exp2(minOrder - 1);
+    const int maxOrder = 25;
     const int steps = maxOrder - minOrder + 1;
-    const bool checkAlgorithms = true;
+    const bool checkAlgorithms = false;
     ofstream file("/Users/Palo/Documents/Programming/EE/extendid\ esej/data/output.csv");
     ofstream randomFile("/Users/Palo/Documents/Programming/EE/extendid\ esej/data/randomOutput.csv");
     pair<long[steps], long[steps]> additions;
@@ -30,7 +38,16 @@ int main(int argc, const char * argv[]) {
         int idx = i - minOrder;
         sampleCount *= 2;
         
+        Hartley fht("/Users/Palo/Documents/Programming/EE/extendid\ esej/data/fht/" + to_string(idx), sampleCount);
         
+        fht.prepareData();
+        fht.computeFourier();
+        
+        times.second[idx] = fht.getTimeTaken().count();
+        additions.second[idx] = fht.getAdditions();
+        multiplications.second[idx] = fht.getMultiplications();
+        
+        auto fhtData = fht.getOutput();
         
         Radix2 r2("/Users/Palo/Documents/Programming/EE/extendid\ esej/data/radix-2/" + to_string(idx), sampleCount);
         
@@ -45,22 +62,11 @@ int main(int argc, const char * argv[]) {
         
         //r2.outputCSV();
         
-        Hartley fht("/Users/Palo/Documents/Programming/EE/extendid\ esej/data/fht/" + to_string(idx), sampleCount);
-        
-        fht.prepareData();
-        fht.computeFourier();
-        
-        times.second[idx] = fht.getTimeTaken().count();
-        additions.second[idx] = fht.getAdditions();
-        multiplications.second[idx] = fht.getMultiplications();
-        
-        auto fhtData = fht.getOutput();
-        
         //fht.outputCSV();
         if (checkAlgorithms) {
             for (long i = 0; i < sampleCount; ++i) {
-                if(!Test::compareDoubles(abs(r2Data[i]), abs(fhtData[i]))) {
-                    cout << "u suck :(\n";
+                if(!compareDoubles(abs(r2Data[i]), abs(fhtData[i]))) {
+                    cout << "u suck :(\nFailed at sample count: " << sampleCount << "\n";
                 }
             }
         }

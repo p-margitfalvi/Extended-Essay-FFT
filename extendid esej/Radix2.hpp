@@ -19,7 +19,7 @@ private:
     void separate(vector<complex<double>>::iterator X, const long length);
     void compute(vector<complex<double>>::iterator X, const long length);
     
-    vector<vector<complex<double>>*> exponentialTable;
+    vector<vector<complex<double>>> exponentialTable;
     
 public:
     void computeFourier();

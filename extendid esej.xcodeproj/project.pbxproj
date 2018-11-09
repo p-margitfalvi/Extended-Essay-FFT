@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		242C52772151003E00C5E623 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 242C52762151003E00C5E623 /* main.cpp */; };
-		2435E57D21934D3000CD7023 /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2435E57B21934D3000CD7023 /* Test.cpp */; };
 		24C82F052190BB990006DE80 /* FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F032190BB990006DE80 /* FFT.cpp */; };
 		24C82F082190C56F0006DE80 /* Radix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F062190C56F0006DE80 /* Radix2.cpp */; };
 		24C82F0B2190EE290006DE80 /* Hartley.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F092190EE290006DE80 /* Hartley.cpp */; };
@@ -29,8 +28,6 @@
 /* Begin PBXFileReference section */
 		242C52732151003E00C5E623 /* extendid esej */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "extendid esej"; sourceTree = BUILT_PRODUCTS_DIR; };
 		242C52762151003E00C5E623 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		2435E57B21934D3000CD7023 /* Test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Test.cpp; sourceTree = "<group>"; };
-		2435E57C21934D3000CD7023 /* Test.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Test.hpp; sourceTree = "<group>"; };
 		24C82F032190BB990006DE80 /* FFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FFT.cpp; sourceTree = "<group>"; };
 		24C82F042190BB990006DE80 /* FFT.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FFT.hpp; sourceTree = "<group>"; };
 		24C82F062190C56F0006DE80 /* Radix2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Radix2.cpp; sourceTree = "<group>"; };
@@ -70,8 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				242C52762151003E00C5E623 /* main.cpp */,
-				2435E57B21934D3000CD7023 /* Test.cpp */,
-				2435E57C21934D3000CD7023 /* Test.hpp */,
 				24C82F032190BB990006DE80 /* FFT.cpp */,
 				24C82F042190BB990006DE80 /* FFT.hpp */,
 				24C82F062190C56F0006DE80 /* Radix2.cpp */,
@@ -142,7 +137,6 @@
 				24C82F0B2190EE290006DE80 /* Hartley.cpp in Sources */,
 				24C82F052190BB990006DE80 /* FFT.cpp in Sources */,
 				242C52772151003E00C5E623 /* main.cpp in Sources */,
-				2435E57D21934D3000CD7023 /* Test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
