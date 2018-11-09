@@ -21,7 +21,7 @@ private:
     vector<double> sine;
     vector<double> cosine;
     
-    vector<double>::iterator compute(vector<double>::iterator xvector, long length);
+    vector<double> compute(long length);
     vector<double> digitReversal(vector<double>& array, long length);
     void swap(vector<double>& x, long i, long j);
     void toReal();

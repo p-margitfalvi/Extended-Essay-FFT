@@ -26,15 +26,15 @@ Radix2::~Radix2() {
 void Radix2::separate(vector<complex<double>>::iterator X, const long length) {
     vector<complex<double>> b(length / 2);
     // Move the odd-indexed elements into a temp array b
-    for(int i = 0; i < length/2; i++) {
+    for(long i = 0; i < length/2; i++) {
         b[i] = X[2*i + 1];
     }
     // Move even-indexed elements to the beginning
-    for (int i = 0; i < length/2; i++) {
+    for (long i = 0; i < length/2; i++) {
         X[i] = X[2*i];
     }
     // Move odd-indexed elements from temporary storage to the second half
-    for (int i = 0; i < length/2; i++) {
+    for (long i = 0; i < length/2; i++) {
         X[i + length/2] = b[i];
     }
 }

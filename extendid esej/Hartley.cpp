@@ -21,7 +21,7 @@ Hartley::~Hartley() {
     delete [] cosine; */
 }
 
-vector<double>::iterator Hartley::compute(vector<double>::iterator xvector, long length) {
+vector<double> Hartley::compute(long length) {
     
     long log2length = (long)log2(length);
     long b_p = length / 2;
@@ -39,15 +39,15 @@ vector<double>::iterator Hartley::compute(vector<double>::iterator xvector, long
                 if (pvar % 2 == 0) {
                     double xcs;
                     if (nvar == 0) {
-                        xcs = xvector[baseb + nvar];
+                        xcs = H[baseb + nvar];
                     } else {
                         multiplications += 2;
                         additions += 1;
-                        xcs = xvector[baseb + nvar]*cosine[t_f] + xvector[nmn]*sine[t_f];
+                        xcs = H[baseb + nvar]*cosine[t_f] + H[nmn]*sine[t_f];
                     }
                     additions += 2;
-                    xarray[baset + nvar] = xvector[baset + nvar] + xcs;
-                    xarray[baseb + nvar] = xvector[baset + nvar] - xcs;
+                    xarray[baset + nvar] = H[baset + nvar] + xcs;
+                    xarray[baseb + nvar] = H[baset + nvar] - xcs;
                 } else {
                     double xcs;
                     if (nvar == 0) {
@@ -58,8 +58,8 @@ vector<double>::iterator Hartley::compute(vector<double>::iterator xvector, long
                         xcs = xarray[baseb + nvar]*cosine[t_f] + xarray[nmn]*sine[t_f];
                     }
                     additions += 2;
-                    xvector[baset + nvar] = xarray[baset + nvar] + xcs;
-                    xvector[baseb + nvar] = xarray[baset + nvar] - xcs;
+                    H[baset + nvar] = xarray[baset + nvar] + xcs;
+                    H[baseb + nvar] = xarray[baset + nvar] - xcs;
                 }
             }
             baset = baset + n_p;
@@ -69,9 +69,9 @@ vector<double>::iterator Hartley::compute(vector<double>::iterator xvector, long
         tss = tss / 2;
     }
     if ((log2length - 1) % 2 == 0) {
-        return xarray.begin();
+        return xarray;
     } else {
-        return xvector;
+        return H;
     }
     
 }
@@ -79,7 +79,7 @@ vector<double>::iterator Hartley::compute(vector<double>::iterator xvector, long
 void Hartley::computeFourier() {
     std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
     digitReversal(H, sampleCount);
-    vector<double>::iterator result = compute(H.begin(), sampleCount);
+    vector<double> result = compute(sampleCount);
     
     for (long i = 0; i < sampleCount; ++i) {
         output[i] = complex<double>((result[i] + result[sampleCount - i])/2, (result[i] - result[sampleCount - i])/2);

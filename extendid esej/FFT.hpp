@@ -20,6 +20,12 @@ using namespace std;
 class FFT {
     
 protected:
+    string name;
+    ofstream file;
+    
+    vector<complex<double>> samples;
+    vector<complex<double>> output;
+    
     long sampleCount = (long)exp2(20);
     std::chrono::milliseconds timeTaken;
     double sampleDeltaT = 1;
@@ -31,16 +37,9 @@ protected:
     static const int frequencyCount = 5;
     const double freq[frequencyCount] = { 2, 5, 11, 17, 29};
     void generateSamples();
-    void generateRandomSamples();
-    double randomDouble(int min, int max);
 
     
 public:
-    string name;
-    ofstream file;
-    
-    vector<complex<double>> samples;
-    vector<complex<double>> output;
     
     FFT(const string &name, const long sampleCount);
     ~FFT();
@@ -48,7 +47,7 @@ public:
     void setSampleCount(const long sampleCount);
     void displayOutput();
     void outputCSV();
-    void insertSamples(complex<double>* data);
+    void insertSamples(const vector<complex<double>>& data) { samples = data; }
     std::chrono::milliseconds getTimeTaken() { return timeTaken; }
     long getAdditions() { return additions; }
     long getMultiplications() { return multiplications; }
