@@ -30,6 +30,9 @@ protected:
     static const int frequencyCount = 5;
     const double freq[frequencyCount] = { 2, 5, 11, 17, 29};
     void generateSamples();
+    void generateRandomSamples();
+    double randomDouble(int min, int max);
+
     
 public:
     string name;
