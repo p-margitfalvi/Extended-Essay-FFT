@@ -8,7 +8,11 @@
 
 #include "Hartley.hpp"
 
+<<<<<<< HEAD
 Hartley::Hartley(const string &name, const long sampleCount) : FFT(name, sampleCount){
+=======
+Hartley::Hartley(const string &name, long sampleCount) : FFT(name, sampleCount){
+>>>>>>> 1f35b6f90e5b5d9b3c381770d416a0d28acf1f25
     prepareData();
 }
 

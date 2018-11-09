@@ -41,7 +41,11 @@ public:
     complex<double>* samples;
     complex<double>* output;
     
+<<<<<<< HEAD
     FFT(const string &name, const long sampleCount);
+=======
+    FFT(const string &name, long sampleCount);
+>>>>>>> 1f35b6f90e5b5d9b3c381770d416a0d28acf1f25
     ~FFT();
     
     void setSampleCount(const long sampleCount);

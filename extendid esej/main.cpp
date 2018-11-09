@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+<<<<<<< HEAD
 #include "Radix2.hpp"
 #include "Hartley.hpp"
 #include "Test.hpp"
@@ -73,8 +74,17 @@ int main(int argc, const char * argv[]) {
     for(int i = 0; i < steps; ++i) {
         file << i << ";" << (long)exp2(i + minOrder) << ";" << times.second[i] << ";" << multiplications.second[i] << ";" << additions.second[i] << "\n";
     }
+=======
+#include "Test.hpp"
+
+
+int main(int argc, const char * argv[]) {
+    /*
+    Radix2 r2("radix-2");
+>>>>>>> 1f35b6f90e5b5d9b3c381770d416a0d28acf1f25
     
     
+<<<<<<< HEAD
     for (int i = minOrder; i <= maxOrder; ++i) {
         
         int idx = i - minOrder;
@@ -123,6 +133,18 @@ int main(int argc, const char * argv[]) {
     for(int i = 0; i < steps; ++i) {
         randomFile << i << ";" << (long)exp2(i + minOrder) << ";" << times.second[i] << ";" << multiplications.second[i] << ";" << additions.second[i] << "\n";
     }
+=======
+    Hartley fht("fht");
     
+    fht.prepareData();
+    fht.computeFourier();
+    cout << "Algorithm " << fht.name << " took: " << fht.getTimeTaken().count() << "ms, " << fht.getMultiplications() << " multiplications and " << fht.getAdditions() << " additions.\n";
+    //fht.displayOutput();
+    fht.outputCSV();
+    */
+>>>>>>> 1f35b6f90e5b5d9b3c381770d416a0d28acf1f25
+    
+    Test test("/Users/Palo/Documents/Programming/EE/extendid\ esej/data", 10, 20, true);
+    cout << test.runTest() << "\n";
     return 0;
 }

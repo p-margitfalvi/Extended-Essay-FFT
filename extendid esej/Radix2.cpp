@@ -8,13 +8,21 @@
 
 #include "Radix2.hpp"
 
+<<<<<<< HEAD
 Radix2::Radix2(const string &name, const long sampleCount) : FFT(name, sampleCount) {
+=======
+Radix2::Radix2(const string &name, long sampleCount) : FFT(name, sampleCount) {
+>>>>>>> 1f35b6f90e5b5d9b3c381770d416a0d28acf1f25
     return;
 }
 
 Radix2::~Radix2() {
     long log2length = (long)log2(sampleCount) + 1;
+<<<<<<< HEAD
     delete [] exponentialTable;
+=======
+    //delete [] exponentialTable;
+>>>>>>> 1f35b6f90e5b5d9b3c381770d416a0d28acf1f25
 }
 
 void Radix2::separate(complex<double>* X, const long length) {
