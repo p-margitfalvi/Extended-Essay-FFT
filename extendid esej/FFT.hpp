@@ -44,7 +44,6 @@ public:
     FFT(const string &name, const long sampleCount);
     ~FFT();
     
-    void setSampleCount(const long sampleCount);
     void displayOutput();
     void outputCSV();
     void insertSamples(const vector<complex<double>>& data) { samples = data; }

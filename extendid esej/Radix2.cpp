@@ -56,9 +56,8 @@ void Radix2::compute(vector<complex<double>>::iterator X, const long length) {
         for(long i = 0; i < length/2; i++) {
             complex<double> e = X[i];
             complex<double> o = X[i + length/2];
-            complex<double> w = exp(complex<double>(0, -2*M_PI*i/length));
             long log2length = (long)log2(length);
-            //complex<double> w = exponentialTable[log2length - 1]->at(i);
+            complex<double> w = exponentialTable[log2length - 1][i];
             multiplications += 4;
             additions += 6;
             X[i] = e + w * o;
@@ -75,7 +74,7 @@ void Radix2::prepareData() {
         //row->reserve((long)exp2(i - 1));
         for (long j = 0; j < (long)exp2(i - 1); ++j) {
             //row->push_back(exp(complex<double>(0, -2*M_PI*j/exp2(i))));
-            exponentialTable[i].push_back(exp(complex<double>(0, -2*M_PI*j/exp2(i))));
+            exponentialTable[i-1].push_back(exp(complex<double>(0, -2*M_PI*j/exp2(i))));
         }
         //exponentialTable.push_back(row);
     }
