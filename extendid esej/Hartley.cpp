@@ -9,18 +9,19 @@
 #include "Hartley.hpp"
 
 
-Hartley::Hartley(const string &name, const long sampleCount) : FFT(name, sampleCount){
-    prepareData();
+Hartley::Hartley(const string &name, const long sampleCount) : FFT(name, sampleCount), xarray(sampleCount, 0){
+    return;
 }
 
 Hartley::~Hartley() {
+    /*
     delete [] H;
     delete [] xarray;
     delete [] sine;
-    delete [] cosine;
+    delete [] cosine; */
 }
 
-double* Hartley::compute(double* xvector, double* xarray, double* cosine, double* sine, long length) {
+vector<double>::iterator Hartley::compute(vector<double>::iterator xvector, long length) {
     
     long log2length = (long)log2(length);
     long b_p = length / 2;
@@ -68,7 +69,7 @@ double* Hartley::compute(double* xvector, double* xarray, double* cosine, double
         tss = tss / 2;
     }
     if ((log2length - 1) % 2 == 0) {
-        return xarray;
+        return xarray.begin();
     } else {
         return xvector;
     }
@@ -78,7 +79,7 @@ double* Hartley::compute(double* xvector, double* xarray, double* cosine, double
 void Hartley::computeFourier() {
     std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
     digitReversal(H, sampleCount);
-    double* result = compute(H, xarray, cosine, sine, sampleCount);
+    vector<double>::iterator result = compute(H.begin(), sampleCount);
     
     for (long i = 0; i < sampleCount; ++i) {
         output[i] = complex<double>((result[i] + result[sampleCount - i])/2, (result[i] - result[sampleCount - i])/2);
@@ -89,20 +90,19 @@ void Hartley::computeFourier() {
 
 void Hartley::toReal() {
     for (long i = 0; i < sampleCount; ++i) {
-        H[i] = samples[i].real();
+        H.push_back(samples[i].real());
     }
 }
 
 void Hartley::prepareData() {
-    H = new double[sampleCount];
-    xarray = new double[sampleCount];
-    sine = new double[sampleCount];
-    cosine = new double[sampleCount];
+    H.reserve(sampleCount);
+    xarray.reserve(sampleCount);
+    sine.reserve(sampleCount);
+    cosine.reserve(sampleCount);
     
     for (long i  = 0; i < sampleCount; ++i) {
-        xarray[i] = 0;
-        sine[i] = sin(2*M_PI*i/sampleCount);
-        cosine[i] = cos(2*M_PI*i/sampleCount);
+        sine.push_back(sin(2*M_PI*i/sampleCount));
+        cosine.push_back(cos(2*M_PI*i/sampleCount));
     }
     multiplications = 0;
     additions = 0;
@@ -114,13 +114,13 @@ void Hartley::generateSamples() {
     toReal();
 }
 
-void Hartley::swap(double* x, long i, long j) {
+void Hartley::swap(vector<double>& x, long i, long j) {
     double temp = x[i];
     x[i] = x[j];
     x[j] = temp;
 }
 
-double* Hartley::digitReversal(double* array, long length) {
+vector<double> Hartley::digitReversal(vector<double>& array, long length) {
     long n1var;
     long log2length = (long)log2(length);
     if (log2length % 2 == 0) {
@@ -129,10 +129,7 @@ double* Hartley::digitReversal(double* array, long length) {
         n1var = (int)sqrt(length/2);
     }
     
-    long* reverse = new long[n1var];
-    for (long i = 0; i < n1var; ++i) {
-        reverse[i] = 0;
-    }
+    vector<long> reverse(n1var, 0);
     reverse[1] = length/2;
     for (long i = 0; i < n1var/2; ++i) {
         reverse[2*i] = reverse[i]/2;
@@ -152,7 +149,5 @@ double* Hartley::digitReversal(double* array, long length) {
         }
     }
     
-    
-    delete [] reverse;
     return array;
 }

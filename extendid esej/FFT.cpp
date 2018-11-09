@@ -11,7 +11,7 @@
 
 
 FFT::FFT(const string &name, const long sampleCount) : file(name + ".csv"), name(name), sampleCount(sampleCount) {
-    samples.reserve(sampleCount);
+    // samples is resized when generating samples
     output.reserve(sampleCount);
 }
 
@@ -61,15 +61,14 @@ double FFT::randomDouble(int min, int max) {
 
 
 void FFT::generateSamples() {
-    
+    samples.resize(sampleCount, complex<double>(0., 0.));
     for(long i=0; i < sampleCount; i++) {
-        samples[i] = complex<double>(0.,0.);
         // sum several known sinusoids into x[]
         for(int j=0; j < frequencyCount; j++) {
             //cout << sin( 2*M_PI*freq[j]*i/nSamples ) << "\n";
             samples[i] += sin( 2*M_PI*freq[j]*i/sampleCount );
         }
-        output[i] = samples[i];        // copy into X[] for FFT work & result
+        output.push_back(samples[i]);        // copy into X[] for FFT work & result
     }
     
 }

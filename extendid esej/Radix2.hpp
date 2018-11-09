@@ -16,10 +16,10 @@
 class Radix2: public FFT {
   
 private:
-    void separate(vector<complex<double>>& X, const long length);
-    void compute(vector<complex<double>>& X, const long length);
+    void separate(vector<complex<double>>::iterator X, const long length);
+    void compute(vector<complex<double>>::iterator X, const long length);
     
-    complex<double>** exponentialTable;
+    vector<vector<complex<double>>*> exponentialTable;
     
 public:
     void computeFourier();

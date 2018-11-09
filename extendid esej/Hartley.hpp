@@ -16,14 +16,14 @@
 class Hartley: public FFT {
     
 private:
-    double* H;
-    double* xarray;
-    double* sine;
-    double* cosine;
+    vector<double> H;
+    vector<double> xarray;
+    vector<double> sine;
+    vector<double> cosine;
     
-    double* compute(double* xvector, double* xarray, double* cosine, double* sine, long length);
-    double* digitReversal(double* xarray, long length);
-    void swap(double* x, long i, long j);
+    vector<double>::iterator compute(vector<double>::iterator xvector, long length);
+    vector<double> digitReversal(vector<double>& array, long length);
+    void swap(vector<double>& x, long i, long j);
     void toReal();
     void generateSamples();
     

@@ -65,8 +65,8 @@ bool Test::runTest() {
         multiplications.second[i] = fht-> getMultiplications();
         
         if (checkOutput) {
-            complex<double>* r2Output = radix2->getOutput();
-            complex<double>* fhtOutput = fht->getOutput();
+            vector<complex<double>> r2Output = radix2->getOutput();
+            vector<complex<double>> fhtOutput = fht->getOutput();
             for (long i = 0; i < sampleSize; ++i) {
                 if (!compareDoubles(abs(r2Output[i]), abs(fhtOutput[i]))) {
                     return false;
