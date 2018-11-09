@@ -49,9 +49,21 @@ void FFT::insertSamples(complex<double>* data) {
     
 }
 
+void FFT::generateRandomSamples() {
+    for (long i = 0; i < sampleCount; ++i) {
+        samples[i] = randomDouble(-500, 500);
+    }
+}
+
+double FFT::randomDouble(int min, int max) {
+    return (double)(random() % (max - min)) + min;
+}
+
+
+
 void FFT::generateSamples() {
     
-    for(int i=0; i < sampleCount; i++) {
+    for(long i=0; i < sampleCount; i++) {
         samples[i] = complex<double>(0.,0.);
         // sum several known sinusoids into x[]
         for(int j=0; j < frequencyCount; j++) {
