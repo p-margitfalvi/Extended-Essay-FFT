@@ -22,15 +22,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "extendid esej/main.cpp"
-            timestampString = "563494161.785884"
+            timestampString = "563540051.32522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "9">
          </BreakpointContent>
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "extendid esej/Hartley.cpp"
-            timestampString = "563494161.785989"
+            timestampString = "563540051.326142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -59,11 +59,27 @@
             condition = "sampleCount == 2097152"
             continueAfterRunningActions = "No"
             filePath = "extendid esej/main.cpp"
-            timestampString = "563494161.786045"
+            timestampString = "563540051.3264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "main(int argc, const char * argv[])"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "extendid esej/main.cpp"
+            timestampString = "563540051.326816"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "9">
          </BreakpointContent>
@@ -74,14 +90,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "extendid esej/Radix2.cpp"
-            timestampString = "563494161.786104"
+            filePath = "extendid esej/main.cpp"
+            timestampString = "563540051.327118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "Radix2::prepareData()"
-            landmarkType = "7">
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "main(int argc, const char * argv[])"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -89,15 +105,16 @@
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
+            condition = "sampleCount == 8388608"
             continueAfterRunningActions = "No"
-            filePath = "extendid esej/Radix2.cpp"
-            timestampString = "563494161.786545"
+            filePath = "extendid esej/main.cpp"
+            timestampString = "563540051.327396"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "Radix2::prepareData()"
-            landmarkType = "7">
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "main(int argc, const char * argv[])"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

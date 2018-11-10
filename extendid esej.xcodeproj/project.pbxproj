@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		242C52772151003E00C5E623 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 242C52762151003E00C5E623 /* main.cpp */; };
+		242C52772151003E00C5E623 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 242C52762151003E00C5E623 /* main.cpp */; settings = {COMPILER_FLAGS = "-w"; }; };
 		24C82F052190BB990006DE80 /* FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F032190BB990006DE80 /* FFT.cpp */; };
 		24C82F082190C56F0006DE80 /* Radix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F062190C56F0006DE80 /* Radix2.cpp */; };
 		24C82F0B2190EE290006DE80 /* Hartley.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24C82F092190EE290006DE80 /* Hartley.cpp */; };

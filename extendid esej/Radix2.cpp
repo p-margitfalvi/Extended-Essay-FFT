@@ -85,8 +85,8 @@ void Radix2::prepareData() {
 
 // Computes the fourier transform and measures the time taken
 void Radix2::computeFourier() {
-    std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
+    clock_t t1 = clock();
     compute(output.begin(), sampleCount);
-    std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();
-    timeTaken = std::chrono::duration_cast<typeof(timeTaken)>(t2 - t1);
+    clock_t t2 = clock();
+    timeTaken = t2 - t1;
 }

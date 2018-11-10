@@ -29,27 +29,26 @@ int main(int argc, const char * argv[]) {
     
     vector<double> dvector;
     vector<complex<double>> cvector;
-
-    const int minOrder = 2;
-    const int maxOrder = 15;
+    
+    const int minOrder = 3;
+    const int maxOrder = 23;
     
     const int minRandomAmplitude = -500;
     const int maxRandomAmplitude = 500;
     
     long sampleCount = (long)exp2(minOrder - 1);
-    const int steps = maxOrder - minOrder;
+    const int steps = maxOrder - minOrder + 1;
     // Whether to compare the outputs of the two algorithms
-    const bool checkAlgorithms = true;
+    const bool checkAlgorithms = false;
     
     ofstream file("/Users/Palo/Documents/Programming/EE/extendid\ esej/data/output.csv");
     ofstream randomFile("/Users/Palo/Documents/Programming/EE/extendid\ esej/data/randomOutput.csv");
     
     pair<long[steps], long[steps]> additions;
     pair<long[steps], long[steps]> multiplications;
-    pair<long[steps], long[steps]> times;
+    pair<clock_t[steps], clock_t[steps]> times;
     
     for (int i = minOrder; i <= maxOrder; ++i) {
-    
         int idx = i - minOrder;
         sampleCount *= 2;
         
@@ -58,7 +57,7 @@ int main(int argc, const char * argv[]) {
         fht.prepareData();
         fht.computeFourier();
         
-        times.second[idx] = fht.getTimeTaken().count();
+        times.second[idx] = fht.getTimeTaken();
         additions.second[idx] = fht.getAdditions();
         multiplications.second[idx] = fht.getMultiplications();
         
@@ -68,12 +67,18 @@ int main(int argc, const char * argv[]) {
         
         r2.prepareData();
         r2.computeFourier();
+    
         
-        times.first[idx] = r2.getTimeTaken().count();
+        times.first[idx] = r2.getTimeTaken();
         additions.first[idx] = r2.getAdditions();
         multiplications.first[idx] = r2.getMultiplications();
         
         auto r2Data = r2.getOutput();
+        
+        if (times.second[0] > 100) {
+            cout << "error, sample coun: " << sampleCount;
+            return 0;
+        }
         
         //r2.outputCSV();
         
@@ -117,7 +122,7 @@ int main(int argc, const char * argv[]) {
         fht.insertSamples(randomSet);
         fht.computeFourier();
         
-        times.second[idx] = fht.getTimeTaken().count();
+        times.second[idx] = fht.getTimeTaken();
         additions.second[idx] = fht.getAdditions();
         multiplications.second[idx] = fht.getMultiplications();
         
@@ -129,7 +134,7 @@ int main(int argc, const char * argv[]) {
         r2.insertSamples(randomSet);
         r2.computeFourier();
         
-        times.first[idx] = r2.getTimeTaken().count();
+        times.first[idx] = r2.getTimeTaken();
         additions.first[idx] = r2.getAdditions();
         multiplications.first[idx] = r2.getMultiplications();
         

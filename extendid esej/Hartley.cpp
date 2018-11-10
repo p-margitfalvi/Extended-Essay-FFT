@@ -77,15 +77,15 @@ vector<double> Hartley::compute(long length) {
 }
 
 void Hartley::computeFourier() {
-    std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
+    clock_t t1 = clock();
     digitReversal(H, sampleCount);
     vector<double> result = compute(sampleCount);
     
     for (long i = 0; i < sampleCount; ++i) {
         output[i] = complex<double>((result[i] + result[sampleCount - i])/2, (result[i] - result[sampleCount - i])/2);
     }
-    std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();
-    timeTaken = std::chrono::duration_cast<typeof(timeTaken)>(t2 - t1);
+    clock_t t2 = clock();
+    timeTaken = t2 - t1;
 }
 
 void Hartley::toReal() {

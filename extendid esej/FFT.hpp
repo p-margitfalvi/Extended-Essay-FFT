@@ -27,7 +27,7 @@ protected:
     vector<complex<double>> output;
     
     long sampleCount = (long)exp2(20);
-    std::chrono::milliseconds timeTaken;
+    clock_t timeTaken;
     double sampleDeltaT = 1;
     double sampleFrequency = sampleCount / sampleDeltaT;
     double frequencyResolution = sampleFrequency / sampleCount;
@@ -47,7 +47,7 @@ public:
     void displayOutput();
     void outputCSV();
     void insertSamples(const vector<complex<double>>& data) { samples = data; }
-    std::chrono::milliseconds getTimeTaken() { return timeTaken; }
+    clock_t getTimeTaken() { return timeTaken; }
     long getAdditions() { return additions; }
     long getMultiplications() { return multiplications; }
     vector<complex<double>> getOutput() { return output; }
