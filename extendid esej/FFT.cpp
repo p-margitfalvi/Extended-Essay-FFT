@@ -32,7 +32,7 @@ void FFT::displayOutput() {
 // Outputs the inputs and outputs into a file with a name "name_set_in_constructor".csv
 void FFT::outputCSV() {
     
-    for(int i=0; i < sampleCount; i++) {
+    for(long i=0; i < sampleCount; i++) {
         file << i << ";" << samples[i].real() << ";" << abs(output[i]) << ";" <<  i * frequencyResolution << "\n";
     }
     
@@ -42,7 +42,7 @@ void FFT::outputCSV() {
 void FFT::generateSamples() {
     for(long i=0; i < sampleCount; i++) {
         // Sample sine waves of known frequencies
-        for(int j=0; j < frequencyCount; j++) {
+        for(long j=0; j < frequencyCount; j++) {
             samples[i] += sin(2*M_PI*freq[j]*i/sampleCount);
         }
         output.push_back(samples[i]);        // Initialize output with some data

@@ -81,7 +81,7 @@ void Hartley::computeFourier() {
     digitReversal(H, sampleCount);
     vector<double> result = compute(sampleCount);
     
-    for (long i = 0; i < sampleCount; ++i) {
+    for (long i = 1; i < sampleCount; ++i) {
         output[i] = complex<double>((result[i] + result[sampleCount - i])/2, (result[i] - result[sampleCount - i])/2);
     }
     clock_t t2 = clock();
